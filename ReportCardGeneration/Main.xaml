@@ -1,0 +1,436 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ReportCardGeneration" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1153.33333333333,6152.66666666667" sap2010:WorkflowViewState.IdRef="ReportCardGeneration_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="74">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>UiPath.Word.Activities</x:String>
+      <x:String>UiPath.Core.Activities.Storage</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>UiPath.Presentations.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Presentations</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Extensions.DependencyModel</AssemblyReference>
+      <AssemblyReference>UiPath.Presentations.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Presentations</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="The workflow to extract the database modify it to meet our needs and get a report card for each student in a pdf file and create a presentation to congratulate the top three performers" DisplayName="ReportCardGeneration" sap:VirtualizedContainerService.HintSize="683.333333333333,5988" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dtStudentMarks" />
+      <Variable x:TypeArguments="s:String[]" Name="arrColumnNames" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="vCount" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtMarksTable" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtSubjectCode" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtStudentChoice" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="vTotalMarks" />
+      <Variable x:TypeArguments="x:Int32" Name="vIncrement" />
+      <Variable x:TypeArguments="x:Int32" Name="vCoreChoice" />
+      <Variable x:TypeArguments="x:Int32" Name="vLangChoice" />
+      <Variable x:TypeArguments="x:String" Name="vClass" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtTopScorers" />
+      <Variable x:TypeArguments="x:Int32" Name="vMasterCount" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Connect to DB and Add Total and Percentage Columns" sap:VirtualizedContainerService.HintSize="641.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="DBConnection.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtStudentMarks">[dtStudentMarks]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:Int32" x:Key="inout_vCount">[vCount]</InOutArgument>
+        <InOutArgument x:TypeArguments="s:String[]" x:Key="inout_arrColumnNames">[arrColumnNames]</InOutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_vIncrement">[vIncrement]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_vTotalMarks">[vTotalMarks]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Spreadsheets" sap:VirtualizedContainerService.HintSize="641.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="GetExcelSpreadSheets.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtSubjectCode">[dtSubjectCode]</InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtStudentChoice">[dtStudentChoice]</InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <Assign sap2010:Annotation.AnnotationText="This is a master counter for looping the whole while loop below until all students have their report card pdfs" DisplayName="Assign Master Counter" sap:VirtualizedContainerService.HintSize="641.333333333333,124" sap2010:WorkflowViewState.IdRef="Assign_32">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[vMasterCount]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="This loop makes the report cards by using word activities and exporting the final document to a pdf format" Condition="[vMasterCount &lt; dtStudentMarks.Rows.Count]" DisplayName="Create the report card for each student" sap:VirtualizedContainerService.HintSize="641.333333333333,3845.33333333333" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_9">
+      <ui:InterruptibleWhile.Body>
+        <Sequence DisplayName="Report Card Creation" sap:VirtualizedContainerService.HintSize="604.666666666667,3645.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:BuildDataTable sap2010:Annotation.AnnotationText="to be joined with the choice table after it is populated with data" DataTable="[dtMarksTable]" DisplayName="Create Report Card Structure" sap:VirtualizedContainerService.HintSize="562.666666666667,104" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Subject&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Marks&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:BuildDataTable>
+          <Assign sap2010:Annotation.AnnotationText="use the same incrementer again" DisplayName="Re-Assign vCount" sap:VirtualizedContainerService.HintSize="562.666666666667,92.6666666666667" sap2010:WorkflowViewState.IdRef="Assign_19">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[vCount]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="This loop will add data into the dtMarksTable according to the extracted data from the database" DisplayName="Generate Report Card Data" sap:VirtualizedContainerService.HintSize="562.666666666667,430.666666666667" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_4">
+            <ui:InterruptibleWhile.Body>
+              <Sequence DisplayName="Add marks for each subject" sap:VirtualizedContainerService.HintSize="304,216" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{arrColumnNames(vCount+2),dtStudentMarks(vMasterCount)(arrColumnNames(vCount+2))}]" DataTable="[dtMarksTable]" DisplayName="Add Subject and Marks into dtMarksTable" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                <Assign DisplayName="Increment vCount" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_14">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[vCount]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[vCount+1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ui:InterruptibleWhile.Body>
+            <ui:InterruptibleWhile.Condition>
+              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="vCount&lt; ((arrColumnNames.Length) - 4)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
+            </ui:InterruptibleWhile.Condition>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InterruptibleWhile>
+          <Assign DisplayName="Re-Assign vCount" sap:VirtualizedContainerService.HintSize="562.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_20">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[vCount]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" sap2010:Annotation.AnnotationText="To make the process as dynamic as possible we will find the row index using the name" DataTable="[dtMarksTable]" DisplayName="Find the Row Index of Core Choice" sap:VirtualizedContainerService.HintSize="562.666666666667,100.666666666667" sap2010:WorkflowViewState.IdRef="LookupDataTable_3" LookupColumnName="Subject" LookupValue="Core Choice" RowIndex="[vCoreChoice]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LookupDataTable>
+          <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" sap2010:Annotation.AnnotationText="To make the process as dynamic as possible we will find the row index using the name" DataTable="[dtMarksTable]" DisplayName="Find Row Index of Language Choice" sap:VirtualizedContainerService.HintSize="562.666666666667,100.666666666667" sap2010:WorkflowViewState.IdRef="LookupDataTable_4" LookupColumnName="Subject" LookupValue="Language Choice" RowIndex="[vLangChoice]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LookupDataTable>
+          <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="This loop will find the core choices and langugage choices of each student" DisplayName="Find the choices of student" sap:VirtualizedContainerService.HintSize="562.666666666667,862" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_7">
+            <ui:InterruptibleWhile.Body>
+              <Sequence DisplayName="compare ID and change the core choice and language choice" sap:VirtualizedContainerService.HintSize="526,662" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If sap2010:Annotation.AnnotationText="The main logic to find out the core and language choice of the student" Condition="[dtStudentMarks(vMasterCount)(&quot;Student ID&quot;).Equals(dtStudentChoice(vCount)(&quot;Student ID&quot;))]" DisplayName="Logic for choices" sap:VirtualizedContainerService.HintSize="484,468" sap2010:WorkflowViewState.IdRef="If_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence DisplayName="assign choices" sap:VirtualizedContainerService.HintSize="304,256" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Assign core choice" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_21">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[dtMarksTable(vCoreChoice)("Subject")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[(dtStudentChoice(vCount)("Core Choice"))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Assign language choice" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_22">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[dtMarksTable(vLangChoice)("Subject")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[(dtStudentChoice(vCount)("Language Choice"))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                </If>
+                <Assign DisplayName="increment vCount" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_23">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[vCount]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[vCount+1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ui:InterruptibleWhile.Body>
+            <ui:InterruptibleWhile.Condition>
+              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="vCount &lt; dtStudentChoice.Rows.Count" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_4" />
+            </ui:InterruptibleWhile.Condition>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InterruptibleWhile>
+          <ui:JoinDataTables sap2010:Annotation.AnnotationText="This will give us the proper format for a report card" DataTable1="[dtSubjectCode]" DataTable2="[dtMarksTable]" DisplayName="Join subject codes from spreadsheet into dtMarkstTable " sap:VirtualizedContainerService.HintSize="562.666666666667,89.3333333333333" sap2010:WorkflowViewState.IdRef="JoinDataTables_2" JoinType="Inner" OutputDataTable="[dtMarksTable]">
+            <ui:JoinDataTables.Arguments>
+              <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
+                <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
+                  <ui:JoinOperationArgument.Column1>
+                    <InArgument x:TypeArguments="x:String">["Subject"]</InArgument>
+                  </ui:JoinOperationArgument.Column1>
+                  <ui:JoinOperationArgument.Column2>
+                    <InArgument x:TypeArguments="x:String">["Subject"]</InArgument>
+                  </ui:JoinOperationArgument.Column2>
+                </ui:JoinOperationArgument>
+              </scg:List>
+            </ui:JoinDataTables.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:JoinDataTables>
+          <ui:RemoveDataColumn Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="2" DataTable="[dtMarksTable]" DisplayName="Remove Duplicate Subject Column" sap:VirtualizedContainerService.HintSize="562.666666666667,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_1" />
+          <ui:CreateDirectory ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="all the pdfs created will be stored in this folder to keep things organized" DisplayName="Create Folder to store all the files created" sap:VirtualizedContainerService.HintSize="562.666666666667,126" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\Mark Cards">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CreateDirectory>
+          <TryCatch DisplayName="Try Catch for File not being found" sap:VirtualizedContainerService.HintSize="562.666666666667,430.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+            <TryCatch.Try>
+              <ui:CopyFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="we can reuse the template again" Destination="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\Mark Cards" DisplayName="Make a copy of the template so that we dont loose it" sap:VirtualizedContainerService.HintSize="434,192.666666666667" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\MarkSheet.docx">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CopyFile>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="si:FileNotFoundException" sap:VirtualizedContainerService.HintSize="438.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="si:FileNotFoundException">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="si:FileNotFoundException" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Word Document not found" sap:VirtualizedContainerService.HintSize="376,212.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;The word document you are trying to copy doesn't exist, please check the name or the path and try again!&quot;]" />
+                    <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_7" Reason="Word Document Not Found" />
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Rank Logic" sap:VirtualizedContainerService.HintSize="562.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="RankLogic.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtStudentMarks">[dtStudentMarks]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="inout_vClass">[vClass]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Int32" x:Key="inout_vMasterCount">[vMasterCount]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Word Activities" sap:VirtualizedContainerService.HintSize="562.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="WordActivites.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtStudentMarks">[dtStudentMarks]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Int32" x:Key="inout_vMasterCount">[vMasterCount]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_vClass">[vClass]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="inout_dtMarksTable">[dtMarksTable]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project" DisplayName="Move the template back to its proper path" sap:VirtualizedContainerService.HintSize="562.666666666667,162" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\Mark Cards\MarkSheet.docx" />
+          <ui:Delete ContinueOnError="{x:Null}" DisplayName="delete the duplicate template" sap:VirtualizedContainerService.HintSize="562.666666666667,80.6666666666667" sap2010:WorkflowViewState.IdRef="Delete_1" Path="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\Mark Cards\MarkSheet.docx" />
+          <Assign DisplayName="Increment Master Counter" sap:VirtualizedContainerService.HintSize="562.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_33">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[vMasterCount]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[vmasterCount+1]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:InterruptibleWhile.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleWhile>
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Percentage" DataTable="[dtStudentMarks]" DisplayName="Sort Table to get top performers" sap:VirtualizedContainerService.HintSize="641.333333333333,22" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Decending" OutputDataTable="[dtTopScorers]" SortOrder="Descending" />
+    <Assign DisplayName="Assign count with 3 to delete all other entries" sap:VirtualizedContainerService.HintSize="641.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_30">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[vCount]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">3</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="we only need the top 3 scorers" DisplayName="delete all other entries other than the top 3" sap:VirtualizedContainerService.HintSize="641.333333333333,314" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_8">
+      <ui:InterruptibleWhile.Body>
+        <Sequence DisplayName="delete entries one by one" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:RemoveDataRow Row="{x:Null}" DataTable="[dtTopScorers]" DisplayName="remove entries from the row index" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="RemoveDataRow_1" RowIndex="[vCount]" />
+        </Sequence>
+      </ui:InterruptibleWhile.Body>
+      <ui:InterruptibleWhile.Condition>
+        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="vCount &lt; dtTopScorers.Rows.Count" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_5" />
+      </ui:InterruptibleWhile.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleWhile>
+    <TryCatch DisplayName="Try Catch for presentation template not being found" sap:VirtualizedContainerService.HintSize="641.333333333333,400" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+      <TryCatch.Try>
+        <ui:CopyFile ContinueOnError="{x:Null}" Destination="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\Mark Cards" DisplayName="make a copy of the template for reuse" sap:VirtualizedContainerService.HintSize="434,162" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="False" Path="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\Top Scorers.pptx" />
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="si:FileNotFoundException" sap:VirtualizedContainerService.HintSize="438.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="si:FileNotFoundException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="si:FileNotFoundException" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="PPT not found" sap:VirtualizedContainerService.HintSize="376,212.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_26">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_11" Text="[&quot;The presentation template is not present or is named incorrectly, please check the path or the name and try again!&quot;]" />
+              <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_9" Reason="PPT not found" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PowerPoint Activities" sap:VirtualizedContainerService.HintSize="641.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="PowerPointActivities.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTopScorers">[dtTopScorers]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtMarksTable">[dtMarksTable]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project" DisplayName="Bring the template back to its original path" sap:VirtualizedContainerService.HintSize="641.333333333333,162" sap2010:WorkflowViewState.IdRef="CopyFile_4" Overwrite="True" Path="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\Mark Cards\Top Scorers.pptx" />
+    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete the duplicate template" sap:VirtualizedContainerService.HintSize="641.333333333333,80.6666666666667" sap2010:WorkflowViewState.IdRef="Delete_2" Path="C:\Users\ppatil\OneDrive - Huron Consulting Group\Desktop\Project\Mark Cards\Top Scorers.pptx" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Success Message" sap:VirtualizedContainerService.HintSize="641.333333333333,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_12" Text="[&quot;The Workflow was successful, all your files are saved in the Mark Cards folder including the Presentation, Thank You!&quot;]" />
+  </Sequence>
+</Activity>
